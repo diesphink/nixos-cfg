@@ -1,0 +1,27 @@
+# Read current theme
+include $HOME/.config/sway/theme
+
+# Load theme variables
+include $theme/variables
+
+# User variables
+include $HOME/.config/sway/variables.d/*.conf
+
+# include /etc/sway/outputs/*.conf
+include /etc/sway/inputs/*.conf
+
+# include modes
+include $HOME/.config/sway/modes/*.conf
+
+# User configs
+include $HOME/.config/sway/config.d/*.conf
+
+# Extra theme configs (bar, etc)
+include $theme/sway.conf
+
+# Include nwg-displays config's (if exists)
+include keyboard
+include pointer
+include touchpad
+include workspaces
+include outputs

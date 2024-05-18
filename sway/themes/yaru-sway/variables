@@ -1,0 +1,3 @@
+
+# Load theme variables from ubuntu sway
+include /usr/share/ubuntusway/themes/yaru-sway/variables
