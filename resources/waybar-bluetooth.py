@@ -8,9 +8,9 @@ Adapted by `Diego <https://github.com/diesphink>`_ from bluetooth2 by `martindou
 """
 
 import re
-import time
 import dbus
 import dbus.mainloop.glib
+
 
 class BlutoothIcons():
     def __init__(self):
@@ -29,8 +29,7 @@ class BlutoothIcons():
         """Update current state."""
         devices = self.get_connected_devices()
         if devices:
-            return " ".join([self._icons[dev['icon']]
-                                    for dev in devices])
+            return " ".join([self._icons[dev['icon']] for dev in devices])
         else:
             return None
 
@@ -56,11 +55,12 @@ class BlutoothIcons():
                     devices.append(device)
         return devices
 
+
 if __name__ == '__main__':
     # while True:
-        bi = BlutoothIcons()
-        devs = bi.update()
-        if devs:
-            print(f"{devs}\n\n")
-        else:
-            print()
+    bi = BlutoothIcons()
+    devs = bi.update()
+    if devs:
+        print(f"{devs}\n\n")
+    else:
+        print()

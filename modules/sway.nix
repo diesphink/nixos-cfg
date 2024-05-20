@@ -22,8 +22,8 @@ let
   # ============
   # Applications  
   # ============
-  term = "${pkgs.foot}/bin/foot";
-  term_float = "${term} -a floating-shell"; # Change app_id for window rules
+  term = "${pkgs.alacritty}/bin/alacritty";
+  term_float = "${term} --class floating-shell"; # Change app_id for window rules
   
   
   # ==========
@@ -156,7 +156,7 @@ in {
     
     (writeShellScriptBin "sph-run-or-show" (builtins.readFile ../resources/run-or-show.sh))
     
-    (pkgs.writers.writePython3Bin "sph-waybar-bluetooth" {libraries = with pkgs.python3.pkgs; [dbus]; flakeIgnore=["E501"];} (builtins.readFile ../resources/waybar-bluetooth.py))
+    (pkgs.writers.writePython3Bin "sph-waybar-bluetooth" {libraries = [python311Packages.dbus-python]; flakeIgnore=["E501"];} (builtins.readFile ../resources/waybar-bluetooth.py))
     
   ];
   
@@ -489,7 +489,7 @@ in {
     # Waybar
     bar {
       id default
-      swaybar_command 'sph-waybar'
+      swaybar_command waybar
     }
     '';
     

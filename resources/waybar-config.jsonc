@@ -211,9 +211,9 @@
     "custom/bluetooth": {
         "format": "{}",
         "interval": 10,
-        "exec": "/home/sphink/etc/sway/scripts/bluetooth.py",
+        "exec": "sph-waybar-bluetooth",
         "exec-if": "exit 0",
-        "on-click": "/home/sphink/etc/regolith/helper_scripts/run_or_show_sway.sh -i 'blueman-manager' 'blueman-manager'"
+        "on-click": "sph-run-or-show -i 'blueman-manager' 'blueman-manager'"
     },
 
     "custom/playerctl": {

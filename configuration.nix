@@ -8,7 +8,7 @@
 
   stylix.image = config.lib.stylix.pixel "base0A";
   #stylix.polarity = "dark";
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
   imports =
     [ # Include the results of the hardware scan.

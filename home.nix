@@ -176,6 +176,8 @@ in {
     alacritty
     rofi-power-menu
     networkmanager_dmenu
+    blueman
+    pkgs.vscode.fhs
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -212,9 +214,7 @@ in {
   #
   #  /etc/profiles/per-user/sphink/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    GTK_THEME = "Adwaita:dark";
-  };
+
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -227,28 +227,27 @@ in {
 #  };
 #};
 
-gtk = {
-    enable = true;
+#gtk = {
+#    enable = true;
 
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
+#    iconTheme = {
+#      name = "Papirus-Dark";
+#      package = pkgs.papirus-icon-theme;
+#    };
 
-    cursorTheme = {
-      name = "Numix-Cursor";
-      package = pkgs.numix-cursor-theme;
-    };
+#    cursorTheme = {
+#      name = "Numix-Cursor";
+#      package = pkgs.numix-cursor-theme;
+#    };
 
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = "1";
-      
-    };
+#    gtk3.extraConfig = {
+#      gtk-application-prefer-dark-theme = "1";
+#      
+#    };
 
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = "1";
-    };
-  };
+#    gtk4.extraConfig = {
+#      gtk-application-prefer-dark-theme = "1";
+#    };
+#  };
 
- 
 }
