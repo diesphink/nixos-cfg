@@ -5,6 +5,11 @@
 { config, pkgs, ... }:
 
 {
+
+  stylix.image = config.lib.stylix.pixel "base0A";
+  #stylix.polarity = "dark";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -23,7 +28,8 @@
   networking.hostName = "ford"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   
-  environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; }; 
+  # 
+  # environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; }; 
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -134,18 +140,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   	git
-  	lazygit
-  	gimp
-  	
-  	grim
-  	slurp
-  	wl-clipboard
-  	mako
-  	
   	#greetd.tuigreet
         #greetd.greetd
   ];
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack"]; })
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

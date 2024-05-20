@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 # This script requires i3ipc-python package (install it from a system package manager
 # or pip).
 # It adds icons to the workspace name for each open window.
@@ -124,7 +122,7 @@ def undo_window_renaming(ipc):
 
 def parse_workspace_name(name):
     return re.match(
-        "(?P<num>[0-9]+)?(?P<shortname>\w+)? ?(?P<icons>.+)?", name
+        r'(?P<num>[0-9]+)?(?P<shortname>\w+)? ?(?P<icons>.+)?', name
     ).groupdict()
 
 
