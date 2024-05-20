@@ -404,6 +404,9 @@ in
           xkb_variant = ",alt-intl";
           xkb_options = "grp:shift_caps_toggle";
           xkb_model = "pc105";
+          repeat_delay = "300";
+          repeat_rate = "40";
+          xkb_numlock = "enabled";
         };
       };
 
