@@ -10,14 +10,17 @@
   #stylix.polarity = "dark";
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   nix = {
     package = pkgs.nixFlakes;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # Bootloader.
@@ -27,7 +30,7 @@
 
   networking.hostName = "ford"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  
+
   # 
   # environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; }; 
 
@@ -58,11 +61,11 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  
+
   # Enable the gnome-keyring secrets vault. 
   # Will be exposed through DBus to programs willing to store secrets.
   services.gnome.gnome-keyring.enable = true;
-  
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -71,22 +74,20 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-#  services.greetd = {
-#    enable = true;
-#    settings = {
-#      default_session = {
-#         # command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
-#        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd sway --width 50";
-#        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-session --remember --remember-user-session --user-menu --asterisks --width 50";
-#      };
-#      gnome_session = {
-#        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd gnome-shell --wwidth 50";
-#      };
-#    };
-#  };
+  #  services.greetd = {
+  #    enable = true;
+  #    settings = {
+  #      default_session = {
+  #         # command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
+  #        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd sway --width 50";
+  #        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-session --remember --remember-user-session --user-menu --asterisks --width 50";
+  #      };
+  #      gnome_session = {
+  #        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd gnome-shell --wwidth 50";
+  #      };
+  #    };
+  #  };
   services.xserver.desktopManager.gnome.enable = true;
-  
-  
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -124,9 +125,12 @@
   users.users.sphink = {
     isNormalUser = true;
     description = "Diego Pereyra";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -139,13 +143,19 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  	git
-  	#greetd.tuigreet
-        #greetd.greetd
+    git
+    #greetd.tuigreet
+    #greetd.greetd
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack"]; })
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "DroidSansMono"
+        "Hack"
+      ];
+    })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -174,5 +184,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

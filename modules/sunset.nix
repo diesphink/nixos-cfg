@@ -3,7 +3,13 @@
 # Uses wlsunset to change color temperature of displays
 # ==================================
 
-{config, pkgs, lib, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   home.packages = with pkgs; [
     wlsunset
     (writeShellScriptBin "sph-sunset" ''
@@ -72,7 +78,5 @@
     '')
   ];
 
-  wayland.windowManager.sway.config.startup = [{ command = "sph-sunset on"; }];
-
-
+  wayland.windowManager.sway.config.startup = [ { command = "sph-sunset on"; } ];
 }
