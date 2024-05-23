@@ -37,10 +37,13 @@ in
   xdg.enable = true;
 
   imports = [
-    ./modules/sway.nix
-    ./modules/sunset.nix
-    ./modules/screenshot.nix
-    ./modules/clipboard-manager.nix
+    ./modules-home/desktop-wayland-sway.nix
+    ./modules-home/sunset-wayland-wlsunset.nix
+    ./modules-home/screenshot-wayland-grimshot.nix
+    ./modules-home/clipboard-any-cliphist.nix
+    ./modules-home/menu-wayland-rofi.nix
+    ./modules-home/lock-wayland-swaylock.nix
+    # ./modules/cursor-any-vanilladmz.nix
   ];
 
   programs.gpg = {
@@ -57,118 +60,6 @@ in
     userEmail = "diesphink@gmail.com";
   };
 
-  programs.rofi = {
-    enable = true;
-
-    plugins = [
-      pkgs.rofi-calc
-      pkgs.rofi-emoji
-    ];
-
-    extraConfig = {
-      terminal = "foot";
-    };
-
-    font = mkForce "FiraCode Nerd Font Medium 12";
-
-    theme = mkForce {
-      "*" = {
-
-        #lightbg = mkLiteral "#${base00}";
-        #background-color = mkLiteral "#${base00}";
-        #lightfg = mkLiteral "#${base01}";
-        #foreground-color = mkLiteral "#${base04}";
-        #border-color = mkLiteral "#${base01}";
-
-        bg0 = mkLiteral "#${base00}";
-        bg1 = mkLiteral "#${base01}";
-        fg0 = mkLiteral "#${base04}";
-
-        accent-color = mkLiteral "#${base0B}";
-        urgent-color = mkLiteral "#${base08}";
-
-        background-color = mkLiteral "transparent";
-        text-color = mkLiteral "@fg0";
-
-        margin = 0;
-        padding = 0;
-        spacing = 0;
-      };
-
-      window = {
-        location = mkLiteral "center";
-        width = 800;
-        background-color = mkLiteral "@bg0";
-      };
-
-      inputbar = {
-        spacing = mkLiteral "8px";
-        padding = mkLiteral "8px";
-        background-color = mkLiteral "@bg1";
-      };
-
-      "prompt, entry, element-icon, element-text" = {
-        vertical-align = mkLiteral "0.5";
-      };
-
-      prompt = {
-        text-color = mkLiteral "@accent-color";
-      };
-
-      textbox = {
-        padding = mkLiteral "8px";
-        background-color = mkLiteral "@bg1";
-      };
-
-      listview = {
-        padding = mkLiteral "4px 0";
-        lines = 15;
-        columns = 1;
-        fixed-height = true;
-      };
-
-      element = {
-        padding = mkLiteral "8px";
-        spacing = mkLiteral "8px";
-      };
-
-      "element normal normal" = {
-        text-color = mkLiteral "@fg0";
-      };
-
-      "element normal urgent" = {
-        text-color = mkLiteral "@urgent-color";
-      };
-
-      "element normal active" = {
-        text-color = mkLiteral "@accent-color";
-      };
-
-      "element selected" = {
-        text-color = mkLiteral "@bg0";
-      };
-
-      "element selected normal, element selected active" = {
-        background-color = mkLiteral "@accent-color";
-      };
-
-      "element selected urgent" = {
-        background-color = mkLiteral "@urgent-color";
-      };
-
-      element-icon = {
-        size = mkLiteral "0.8em";
-      };
-
-      element-text = {
-        text-color = mkLiteral "inherit";
-      };
-
-      #element-icon = {vertical-align = 0.5;};
-      #element-text = {vertical-align = 0.5;};
-    };
-  };
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -177,14 +68,20 @@ in
     gnupg
     pinentry-gnome3
 
-    foot # Wayland terminal emulator
     calcurse # Text-based calendar and scheduling application
     pavucontrol # PulseAudio Volume Control
-    alacritty
     rofi-power-menu
     networkmanager_dmenu
     blueman
     pkgs.vscode.fhs
+    blanket
+    keepassxc
+    fastfetch
+    telegram-desktop
+    obsidian
+
+    # qt6ct
+    # qt6Packages.qt6gtk2
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -224,6 +121,26 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      name = "Numix-Cursor";
+      package = pkgs.numix-cursor-theme;
+    };
+  };
+
+  qt = {
+    enable = true;
+    # platformTheme.name = "qt5ct";
+    style.name = "Adwaita-Dark";
+  };
+
+  programs.alacritty = {
+    enable = true;
+  };
+
+  # qt.enable = true;
 
   # gtk = {
   #  enable = true;

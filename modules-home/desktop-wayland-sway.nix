@@ -64,9 +64,6 @@ in
     gron # keyboard-toggle
     pamixer # volume-notify
     light # brightness-notify
-    grim # lock
-    ffmpeg # lock
-    swaylock # lock
     playerctl # Media keys
 
     # rofi                    # Menus
@@ -122,31 +119,6 @@ in
           --category "hud" \
           "Brightness" \
           "Current brightness: <b>$VALUE%</b>"
-    '')
-
-    (writeShellScriptBin "sph-lock" ''
-      OUTPUTS=$(swaymsg -t get_outputs --raw | jq -r '.[] | select(.active) | .name')
-      SWAYLOCK_ARGS=""
-      for OUTPUT in $OUTPUTS; do
-        rm /tmp/screen-out-$OUTPUT.png
-        grim -o $OUTPUT /tmp/screen-$OUTPUT.png
-        ffmpeg -i /tmp/screen-$OUTPUT.png -vf "gblur=15, vignette=PI/5" -c:a copy /tmp/screen-out-$OUTPUT.png
-        SWAYLOCK_ARGS="$SWAYLOCK_ARGS -i $OUTPUT:/tmp/screen-out-$OUTPUT.png"
-      done
-      swaylock $SWAYLOCK_ARGS --daemonize
-    '')
-
-    (writeShellScriptBin "sph-dim" "light -G > /tmp/brightness && light -S 10")
-    (writeShellScriptBin "sph-undim" "light -S $([ -f /tmp/brightness ] && cat /tmp/brightness || echo 100%)")
-
-    (writeShellScriptBin "sph-idle" ''
-      swayidle -w \
-        timeout ${idle-dim-time} 'sph-dim' resume 'sph-undim' \
-        timeout ${idle-lock-time} 'sph-lock' \
-        timeout ${idle-screen-time} 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-        before-sleep 'playerctl pause' \
-        before-sleep 'sph-lock' \
-        lock 'sph-lock' &
     '')
 
     (pkgs.writers.writePython3Bin "sph-first-empty-workspace" {
@@ -217,11 +189,11 @@ in
       window.border = 2;
       floating.border = 2;
       window.hideEdgeBorders = "none";
-      output = {
-        "*" = {
-          bg = mkForce "/home/sphink/wallpaper.jpg fill";
-        };
-      };
+      # output = {
+      #   "*" = {
+      #     bg = mkForce "/home/sphink/wallpaper.jpg fill";
+      #   };
+      # };
 
       #      colors.focused         = {border = "${color2}"; background = "${color0}"; text = "${color6}"; indicator = "${color2}"; childBorder = "${color2}";};
       #      colors.focusedInactive = {border = "${color1}"; background = "${color1}"; text = "${color5}"; indicator = "${color3}"; childBorder = "${color1}";};
@@ -254,6 +226,7 @@ in
           "${modifier}+Shift+space" = "exec nwg-drawer";
 
           # Media keys
+          "XF86ScreenSaver" = "exec sph-lock";
           "XF86AudioLowerVolume" = "exec sph-volume-down";
           "XF86AudioRaiseVolume" = "exec sph-volume-up";
           "XF86AudioMute" = "exec sph-volume-mute";
@@ -277,7 +250,6 @@ in
           "${modifier}+backspace" = "exec sph-keyboard-toggle";
 
           # Other media keys (lock, search, display, poweroff)
-          "XF86ScreenSaver" = "exec sph-lock";
           "XF86Search" = "exec ${menu}";
           "XF86TouchpadToggle" = "input type:touchpad events toggle enabled disabled";
           "XF86Display" = "exec nwg-displays";
@@ -367,6 +339,9 @@ in
           # Move workspace to center
           "${modifier}+v" = "move absolute position center";
 
+          # Lock screen
+          "${modifier}+Escape" = "exec sph-lock";
+
           # Launch apps
           "${modifier}+Return" = "exec ${term}";
           "${modifier}+Shift+Return" = "exec ${term_float}";
@@ -374,16 +349,13 @@ in
           "${modifier}+w" = "exec nmcli d wifi rescan && networkmanager_dmenu";
           "${modifier}+c" = "exec rofi -show calc -modi calc -no-show-match -no-sort | wl-copy";
 
-          # Lock screen
-          "${modifier}+Escape" = "exec sph-lock";
-
           # Show notifications
           "${modifier}+n" = "exec swaync-client -t";
 
           # Toggle apps
           "${modifier}+k" = "exec sph-run-or-show -i 'org.keepassxc.KeePassXC' 'keepassxc'";
           "${modifier}+h" = "exec sph-run-or-show -i 'com.rafaelmardojai.Blanket' 'blanket'";
-          "${modifier}+b" = "exec sph-run-or-show -i 'blueman-manager' 'blueman-manager'";
+          "${modifier}+b" = "exec sph-run-or-show -i '.blueman-manager-wrapped' 'blueman-manager'";
           "${modifier}+s" = "exec sph-run-or-show -i 'pavucontrol' 'pavucontrol'";
           "${modifier}+backslash" = "exec sph-run-or-show -c 'obsidian' 'obsidian'";
           "${modifier}+m" = "exec sph-run-or-show -c 'Plexamp' '/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=startplexamp com.plexamp.Plexamp'";
@@ -482,7 +454,7 @@ in
         }
         {
           criteria = {
-            app_id = "blueman-manager";
+            app_id = ".blueman-manager-wrapped";
           };
           command = "floating enable, move scratchpad, focus";
         }
@@ -512,7 +484,6 @@ in
       startup = [
 
         # Once
-        { command = "sph-idle"; }
         { command = "swaync"; }
         { command = "autotiling"; }
         { command = "sph-autoname-workspaces"; }
@@ -560,24 +531,5 @@ in
     '';
   };
 
-  # ========
-  # Swaylock
-  # ========
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      indicator-caps-lock = true;
-      indicator-idle-visible = true;
-      ignore-empty-password = true;
-      show-failed-attempts = true;
-      show-keyboard-layout = true;
-      font = "FiraCode Nerd Font";
-      font-size = "12";
 
-      ring-color = mkForce "${base03}";
-      ring-caps-lock-color = mkForce "${base08}";
-      text-caps-lock-color = mkForce "${base08}";
-      inside-caps-lock-color = mkForce "${base00}";
-    };
-  };
 }

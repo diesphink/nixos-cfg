@@ -1,6 +1,6 @@
 # ==================================
-# Sunset
-# Uses wlsunset to change color temperature of displays
+# Screenshot mechanism for Sway
+# Uses grimshot to capture image, swappy to annotate and wl-clipboard to copy to clipboard
 # ==================================
 
 {

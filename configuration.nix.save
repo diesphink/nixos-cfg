@@ -6,12 +6,13 @@
 
 {
 
+  stylix.image = config.lib.stylix.pixel "base0A";
+  #stylix.polarity = "dark";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./modules-sys/syncthing.nix
-    ./modules-sys/stylix.nix
-    # ./modules-sys/login-gdm.nix
   ];
 
   nix = {
@@ -40,14 +41,14 @@
   #   QT_QPA_PLATFORMTHEME="qt5ct";
   # };
 
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "lxqt";
-  #   # style = "kvantum";
-  # };
+  qt = {
+    enable = true;
+    platformTheme = "lxqt";
+    # style = "kvantum";
+  };
 
   services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "${pkgs.gnome3.gnome-session}/bin/gnome-session";
+  #services.xrdp.defaultWindowManager = "${pkgs.sway}/bin/sway";
   services.xrdp.openFirewall = true;
   services.gnome.gnome-remote-desktop.enable = true;
   # Open ports in the firewall.
@@ -56,6 +57,7 @@
     allowedTCPPorts = [ 3389 ];
     allowedUDPPorts = [ 3389 ];
   };
+
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -92,68 +94,28 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    # extraSessionCommands = ''
-    #   sway --unsupported-gpu
-    # '';
-    # extraOptions = [
-    #   "--unsupported-gpu"
-    #   "--verbose"
-    #   "--debug"
-    # ];
   };
   xdg.portal.wlr.enable = true;
 
-  # services.displayManager.defaultSession = "gnome-xorg";
-  # services.xserver.displayManager.lightdm = {
-  #   enable = true;
-  #   greeters.tiny.enable = true;
-  #   extraSeatDefaults = ''
-  #     [Seat:*]
-  #     user-session = "gnome-xorg"
-  #   '';
-    
-  #   # greeters.mobile.enable = true;
-    
-  #   # greeters.enso.enable = true;
-  # };
-  # services.displayManager.sddm = {
-  #  enable = true;
-  #   enableHidpi = true;
-  #   theme = "sddmdf-sugar-dark";
-  # };
-  
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.autoSuspend = false;
   services.xserver.desktopManager.gnome.enable = true;
-
-# List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    xorg.xf86videonouveau
-    (writeShellScriptBin "sway" ''
-      sway --unsupported-gpu
-    '')
-  ];
-
-    services.greetd = {
-      enable = true;
+  
+  #   services.greetd = {
+  #     enable = true;
   #     settings = {
   #       default_session = {
-  #         command = "${pkgs.cage}/bin/cage -s ${pkgs.greetd.regreet}/bin/regreet";
-  #       };
-  #     };
-
-
-      settings = {
-        default_session = {
-           # command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd 'sway --unsupported-gpu' --width 50 --no-xsession-wrapper";
-         # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-session --remember --remember-user-session --user-menu --asterisks --width 50";
-       };
-      #  gnome_session = {
-      #    command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd gnome-shell --wwidth 50";
-      #  };
-     };
-   };
+  #          # command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
+  #       command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd 'sway --unsupported-gpu' --width 50";
+  #        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-session --remember --remember-user-session --user-menu --asterisks --width 50";
+  #      };
+  #     #  gnome_session = {
+  #       #  command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd gnome-shell --wwidth 50";
+  #     #  };
+  #    };
+  #  };
+  
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -195,6 +157,9 @@
       "networkmanager"
       "wheel"
     ];
+    packages = with pkgs; [
+      #  thunderbird
+    ];
   };
 
   # Install firefox.
@@ -203,21 +168,56 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    git
+    adwaita-qt
+    gnome3.gnome-session
+    #greetd.tuigreet
+    #greetd.greetd
+  ];
 
   fonts.packages = with pkgs; [
     (nerdfonts.override {
       fonts = [
-        "SourceCodePro"
-        # "FiraCode"
-        # "DroidSansMono"
-        # "Hack"
-        "Ubuntu"
+        "FiraCode"
+        "DroidSansMono"
+        "Hack"
       ];
     })
   ];
 
+  services.syncthing = {
+    enable = true;
+    dataDir = "/home/sphink";
+    user = "sphink";
+    overrideFolders = true;
+    overrideDevices = true;
+    settings = {
+      devices = {
+        "zem" = { id = "VUU7PKC-L6J5XJP-HPBGBET-GW7N7J4-LYCZHHV-234T3AS-GCYCQ2X-KI2ZBQC"; };
+        "marvin" = { id = "V3UL6LB-EKABB5D-EULJLQQ-WPW2IBG-AZM4BN7-MIJIG7J-V7J5KPH-TD35ZAI"; };
+        "HLTE556N" = { id = "YMXYP7H-2QI6CMQ-Q2AUPR7-TX4CCCC-WL3UMPQ-H5SUXWN-QM2EAPT-2HEVVAB"; };
+      };
+
+      options = {
+        urAccepted = -1;
+      };
+
+      folders = {
+        "Notes" = {
+          path = "/home/sphink/notes";
+          devices = [ "zem" "marvin" "HLTE556N" ];
+          id = "hyrnl-n7ill";
+        };
+      };
+
+    };
+  };
+
   environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

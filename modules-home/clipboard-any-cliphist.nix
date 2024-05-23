@@ -1,6 +1,6 @@
 # ==================================
-# Sunset
-# Uses wlsunset to change color temperature of displays
+# Clipboard manager
+# Using cliphist and rofi
 # ==================================
 
 {
