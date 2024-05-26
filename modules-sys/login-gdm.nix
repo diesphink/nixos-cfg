@@ -11,4 +11,6 @@
     enable = true;
     autoSuspend = false;
   };
+  services.displayManager.defaultSession = "sway";
+  
 }

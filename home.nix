@@ -43,6 +43,7 @@ in
     ./modules-home/clipboard-any-cliphist.nix
     ./modules-home/menu-wayland-rofi.nix
     ./modules-home/lock-wayland-swaylock.nix
+    ./modules-home/browser-firefox.nix
     # ./modules/cursor-any-vanilladmz.nix
   ];
 
@@ -72,13 +73,18 @@ in
     pavucontrol # PulseAudio Volume Control
     rofi-power-menu
     networkmanager_dmenu
-    blueman
     pkgs.vscode.fhs
     blanket
     keepassxc
     fastfetch
     telegram-desktop
     obsidian
+    iosevka # Adicionada por causa do tema no obsidian, TODO: rever
+    noto-fonts # Adicionada por causa do tema no obsidian, TODO: rever
+    plexamp
+    prusa-slicer
+    baobab
+    lazygit
 
     # qt6ct
     # qt6Packages.qt6gtk2
@@ -132,8 +138,8 @@ in
 
   qt = {
     enable = true;
-    # platformTheme.name = "qt5ct";
-    style.name = "Adwaita-Dark";
+    # platformTheme.name = "gtk2";
+    style.name = "Adwaita-dark";
   };
 
   programs.alacritty = {

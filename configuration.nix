@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
     ./modules-sys/syncthing.nix
     ./modules-sys/stylix.nix
-    # ./modules-sys/login-gdm.nix
+    ./modules-sys/login-gdm.nix
   ];
 
   nix = {
@@ -22,6 +22,10 @@
     ];
   };
 
+  # services.xserver.desktopManager.pantheon.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.efiSysMountPoint = "/efi";
@@ -30,21 +34,13 @@
   networking.hostName = "ford"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # 
-  # environment.sessionVariables = { GTK_THEME = "Adwaita:dark"; }; 
-  # environment.sessionVariables = { 
-  #   WLR_NO_HARDWARE_CURSORS = 1;
-  # };
-  # environment.sessionVariables = {
-  #   QT_QPA_PLATFORM = "wayland";
-  #   QT_QPA_PLATFORMTHEME="qt5ct";
-  # };
-
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "lxqt";
-  #   # style = "kvantum";
-  # };
+  services.flatpak.enable = true;
+  # For the sandboxed apps to work correctly, desktop integration portals need to be
+  # installed. If you run GNOME, this will be handled automatically for you; 
+  # in other cases, you will need to add something like the following to your
+  # configuration.nix:
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.config.common.default = "gtk";
 
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "${pkgs.gnome3.gnome-session}/bin/gnome-session";
@@ -91,19 +87,19 @@
 
   programs.sway = {
     enable = true;
-    wrapperFeatures.gtk = true;
-    # extraSessionCommands = ''
-    #   sway --unsupported-gpu
-    # '';
-    # extraOptions = [
-    #   "--unsupported-gpu"
-    #   "--verbose"
-    #   "--debug"
-    # ];
+    wrapperFeatures = {
+      gtk = true;
+      base = true;
+    };
+    extraSessionCommands = ''
+      export WLR_NO_HARDWARE_CURSORS=1
+    '';
+    extraOptions = [
+      "--unsupported-gpu"
+    ];
   };
   xdg.portal.wlr.enable = true;
 
-  # services.displayManager.defaultSession = "gnome-xorg";
   # services.xserver.displayManager.lightdm = {
   #   enable = true;
   #   greeters.tiny.enable = true;
@@ -122,38 +118,34 @@
   #   theme = "sddmdf-sugar-dark";
   # };
   
-  services.xserver.desktopManager.gnome.enable = true;
 
 # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    xorg.xf86videonouveau
-    (writeShellScriptBin "sway" ''
-      sway --unsupported-gpu
-    '')
+    gnome.nautilus
   ];
 
-    services.greetd = {
-      enable = true;
+  #   services.greetd = {
+  #     enable = true;
+  # #     settings = {
+  # #       default_session = {
+  # #         command = "${pkgs.cage}/bin/cage -s ${pkgs.greetd.regreet}/bin/regreet";
+  # #       };
+  # #     };
+
+
   #     settings = {
   #       default_session = {
-  #         command = "${pkgs.cage}/bin/cage -s ${pkgs.greetd.regreet}/bin/regreet";
-  #       };
-  #     };
-
-
-      settings = {
-        default_session = {
-           # command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd 'sway --unsupported-gpu' --width 50 --no-xsession-wrapper";
-         # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-session --remember --remember-user-session --user-menu --asterisks --width 50";
-       };
-      #  gnome_session = {
-      #    command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd gnome-shell --wwidth 50";
-      #  };
-     };
-   };
+  #          # command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
+  #         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd 'sway --unsupported-gpu' --width 50 --no-xsession-wrapper";
+  #        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-session --remember --remember-user-session --user-menu --asterisks --width 50";
+  #      };
+  #     #  gnome_session = {
+  #     #    command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd gnome-shell --wwidth 50";
+  #     #  };
+  #    };
+  #  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -184,6 +176,16 @@
     #media-session.enable = true;
   };
 
+  # Enable bluetooth
+  hardware.bluetooth = {
+    enable = true; # enables support for Bluetooth
+    powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    # settings.General.Experimental = true;
+    # settings.Input.ClassicBondedOnly = false;
+  };
+  
+  services.blueman.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -191,17 +193,19 @@
   users.users.sphink = {
     isNormalUser = true;
     description = "Diego Pereyra";
+    hashedPassword="$y$j9T$C2kehlCtN4ThJnIWWT6I11$dkB89nIGt0rOW2t2qf18m6x7/htCZXOXbCylAcx5ZK8";
     extraGroups = [
       "networkmanager"
       "wheel"
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  programs.nautilus-open-any-terminal.enable = true;
+  programs.nautilus-open-any-terminal.terminal = "alacritty";
+  services.gnome.sushi.enable = true;
 
   
 
@@ -218,6 +222,10 @@
   ];
 
   environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
+
+  security.pam.loginLimits = [
+    { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

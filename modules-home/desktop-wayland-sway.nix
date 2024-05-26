@@ -168,6 +168,7 @@ in
   wayland.windowManager.sway = {
     enable = true;
     checkConfig = false;
+    package = null; # Use system package, with --unsupported-gpu
     config = {
 
       # ==============
@@ -226,7 +227,6 @@ in
           "${modifier}+Shift+space" = "exec nwg-drawer";
 
           # Media keys
-          "XF86ScreenSaver" = "exec sph-lock";
           "XF86AudioLowerVolume" = "exec sph-volume-down";
           "XF86AudioRaiseVolume" = "exec sph-volume-up";
           "XF86AudioMute" = "exec sph-volume-mute";
@@ -339,13 +339,10 @@ in
           # Move workspace to center
           "${modifier}+v" = "move absolute position center";
 
-          # Lock screen
-          "${modifier}+Escape" = "exec sph-lock";
-
           # Launch apps
           "${modifier}+Return" = "exec ${term}";
           "${modifier}+Shift+Return" = "exec ${term_float}";
-          "${modifier}+e" = "exec 'GDK_BACKEND=x11 thunar'";
+          "${modifier}+e" = "exec 'nautilus'";
           "${modifier}+w" = "exec nmcli d wifi rescan && networkmanager_dmenu";
           "${modifier}+c" = "exec rofi -show calc -modi calc -no-show-match -no-sort | wl-copy";
 
@@ -358,7 +355,7 @@ in
           "${modifier}+b" = "exec sph-run-or-show -i '.blueman-manager-wrapped' 'blueman-manager'";
           "${modifier}+s" = "exec sph-run-or-show -i 'pavucontrol' 'pavucontrol'";
           "${modifier}+backslash" = "exec sph-run-or-show -c 'obsidian' 'obsidian'";
-          "${modifier}+m" = "exec sph-run-or-show -c 'Plexamp' '/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=startplexamp com.plexamp.Plexamp'";
+          "${modifier}+m" = "exec sph-run-or-show -c 'Plexamp' plexamp";
         };
 
       keycodebindings =

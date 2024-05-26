@@ -34,6 +34,16 @@
           ];
           id = "hyrnl-n7ill";
         };
+        "vault" = {
+          path = "/home/sphink/.vault";
+          devices = [
+            "zem"
+            "marvin"
+            "HLTE556N"
+          ];
+          id = "yingz-zdnsi";
+        };
+
       };
     };
   };
