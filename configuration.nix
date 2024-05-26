@@ -176,16 +176,7 @@
     #media-session.enable = true;
   };
 
-  # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true; # enables support for Bluetooth
-    powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    # settings.General.Experimental = true;
-    # settings.Input.ClassicBondedOnly = false;
-  };
   
-  services.blueman.enable = true;
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
