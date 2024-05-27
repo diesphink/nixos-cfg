@@ -124,6 +124,8 @@
     polkit_gnome
     gparted
     fuse
+    zsh
+    rsync
   ];
 
   virtualisation.docker.enable = true;
@@ -163,11 +165,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sphink = {
     isNormalUser = true;
     description = "Diego Pereyra";
     hashedPassword="$y$j9T$C2kehlCtN4ThJnIWWT6I11$dkB89nIGt0rOW2t2qf18m6x7/htCZXOXbCylAcx5ZK8";
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"

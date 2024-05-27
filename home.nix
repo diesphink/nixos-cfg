@@ -48,6 +48,7 @@ in
     ./modules-home/atuin.nix
     ./modules-home/wallpaper.nix
     ./modules-home/mime-types.nix
+    ./modules-home/shell-any-zsh.nix
   ];
 
   
