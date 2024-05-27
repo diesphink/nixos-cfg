@@ -13,6 +13,7 @@ import signal
 import sys
 
 WINDOW_ICONS = {
+    "alacritty": "",
     "audacious": "",
     "azote": "",
     "balena-etcher": "",

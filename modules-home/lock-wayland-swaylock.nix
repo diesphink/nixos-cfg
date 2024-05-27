@@ -26,21 +26,6 @@ in
   # Packages
   # ========
   home.packages = with pkgs; [
-    grim # lock
-    ffmpeg # lock
-    swaylock # lock
-
-    (writeShellScriptBin "sph-lock" ''
-      OUTPUTS=$(swaymsg -t get_outputs --raw | jq -r '.[] | select(.active) | .name')
-      SWAYLOCK_ARGS=""
-      for OUTPUT in $OUTPUTS; do
-        rm /tmp/screen-out-$OUTPUT.png
-        grim -o $OUTPUT /tmp/screen-$OUTPUT.png
-        ffmpeg -i /tmp/screen-$OUTPUT.png -vf "gblur=15, vignette=PI/5" -c:a copy /tmp/screen-out-$OUTPUT.png
-        SWAYLOCK_ARGS="$SWAYLOCK_ARGS -i $OUTPUT:/tmp/screen-out-$OUTPUT.png"
-      done
-      swaylock $SWAYLOCK_ARGS --daemonize
-    '')
 
     (writeShellScriptBin "sph-dim" "light -G > /tmp/brightness && light -S 10")
     (writeShellScriptBin "sph-undim" "light -S $([ -f /tmp/brightness ] && cat /tmp/brightness || echo 100%)")
@@ -48,11 +33,11 @@ in
     (writeShellScriptBin "sph-idle" ''
       swayidle -w \
         timeout ${idle-dim-time} 'sph-dim' resume 'sph-undim' \
-        timeout ${idle-lock-time} 'sph-lock' \
+        timeout ${idle-lock-time} 'swaylock' \
         timeout ${idle-screen-time} 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
         before-sleep 'playerctl pause' \
-        before-sleep 'sph-lock' \
-        lock 'sph-lock' &
+        before-sleep 'swaylock' \
+        lock 'swaylock' &
     '')
 
   ];
@@ -68,8 +53,8 @@ in
       modifier = config.wayland.windowManager.sway.config.modifier;
     in
     lib.mkOptionDefault {
-      "XF86ScreenSaver" = "exec sph-lock";
-      "${modifier}+Escape" = "exec sph-lock";      
+      "XF86ScreenSaver" = "exec swaylock --grace 0";
+      "${modifier}+Escape" = "exec swaylock --grace 0";
     };
 
 
@@ -78,14 +63,22 @@ in
   # ========
   programs.swaylock = {
     enable = true;
+    package = pkgs.swaylock-effects;
     settings = {
       indicator-caps-lock = true;
       indicator-idle-visible = true;
       ignore-empty-password = true;
       show-failed-attempts = true;
-      show-keyboard-layout = true;
-      font = "FiraCode Nerd Font";
-      font-size = "12";
+      show-keyboard-layout = false;
+      font = "SauceCodePro Nerd Font";
+      font-size = "15";
+      screenshots = true;
+      effect-pixelate = 10;
+      grace = 10;
+      clock = true;
+      datestr = "󰌾 Locked";
+      
+
 
       ring-color = mkForce "${base03}";
       ring-caps-lock-color = mkForce "${base08}";

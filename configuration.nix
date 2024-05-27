@@ -12,6 +12,8 @@
     ./modules-sys/syncthing.nix
     ./modules-sys/stylix.nix
     ./modules-sys/login-gdm.nix
+    ./modules-sys/bluetooth.nix
+    ./modules-sys/fonts.nix
   ];
 
   nix = {
@@ -25,6 +27,7 @@
   # services.xserver.desktopManager.pantheon.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
 
+  xdg.mime.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -43,9 +46,20 @@
   xdg.portal.config.common.default = "gtk";
 
   services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "${pkgs.gnome3.gnome-session}/bin/gnome-session";
+  services.xrdp.defaultWindowManager = "${pkgs.sway}/bin/sway";
   services.xrdp.openFirewall = true;
   services.gnome.gnome-remote-desktop.enable = true;
+
+  # Enable udisks2, a DBus service that allows applications to query and manipulate storage devices.
+  # Gnome disks use this
+  services.udisks2.enable = true;
+
+  # Enable GVfs, a userspace virtual filesystem.
+  services.gvfs.enable = true;
+
+  # Enable polkit
+  security.polkit.enable = true;
+
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
@@ -78,6 +92,8 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
+  programs.nix-ld.enable = true; 
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -100,52 +116,19 @@
   };
   xdg.portal.wlr.enable = true;
 
-  # services.xserver.displayManager.lightdm = {
-  #   enable = true;
-  #   greeters.tiny.enable = true;
-  #   extraSeatDefaults = ''
-  #     [Seat:*]
-  #     user-session = "gnome-xorg"
-  #   '';
-    
-  #   # greeters.mobile.enable = true;
-    
-  #   # greeters.enso.enable = true;
-  # };
-  # services.displayManager.sddm = {
-  #  enable = true;
-  #   enableHidpi = true;
-  #   theme = "sddmdf-sugar-dark";
-  # };
-  
-
-# List packages installed in system profile. To search, run:
+  # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    gnome.nautilus
+    polkit
+    polkit_gnome
+    gparted
+    fuse
   ];
 
-  #   services.greetd = {
-  #     enable = true;
-  # #     settings = {
-  # #       default_session = {
-  # #         command = "${pkgs.cage}/bin/cage -s ${pkgs.greetd.regreet}/bin/regreet";
-  # #       };
-  # #     };
+  virtualisation.docker.enable = true;
 
-
-  #     settings = {
-  #       default_session = {
-  #          # command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
-  #         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd 'sway --unsupported-gpu' --width 50 --no-xsession-wrapper";
-  #        # command = "${pkgs.greetd.tuigreet}/bin/tuigreet --sessions ${config.services.xserver.displayManager.sessionData.desktops}/share/xsessions:${config.services.xserver.displayManager.sessionData.desktops}/share/wayland-session --remember --remember-user-session --user-menu --asterisks --width 50";
-  #      };
-  #     #  gnome_session = {
-  #     #    command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --cmd gnome-shell --wwidth 50";
-  #     #  };
-  #    };
-  #  };
+  programs.file-roller.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -188,6 +171,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
   };
 
@@ -199,18 +183,6 @@
   services.gnome.sushi.enable = true;
 
   
-
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "SourceCodePro"
-        # "FiraCode"
-        # "DroidSansMono"
-        # "Hack"
-        "Ubuntu"
-      ];
-    })
-  ];
 
   environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
 

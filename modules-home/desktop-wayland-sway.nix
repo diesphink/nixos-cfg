@@ -69,7 +69,6 @@ in
     # rofi                    # Menus
     nwg-drawer # Full apps list
     nwg-displays # Display manager
-    nwg-bar # Exit bar dialog
     swaynotificationcenter # Notification center
     waybar # Status bar
     autotiling # Auto-tiling on sway (vertical/horizontal)
@@ -188,6 +187,7 @@ in
       bars = [ ];
       window.titlebar = false;
       window.border = 2;
+      floating.titlebar = false;
       floating.border = 2;
       window.hideEdgeBorders = "none";
       # output = {
@@ -485,6 +485,7 @@ in
         { command = "autotiling"; }
         { command = "sph-autoname-workspaces"; }
         { command = "syncthing -no-browser"; }
+        { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";}
 
         # Always 
         {

@@ -43,9 +43,14 @@ in
     ./modules-home/clipboard-any-cliphist.nix
     ./modules-home/menu-wayland-rofi.nix
     ./modules-home/lock-wayland-swaylock.nix
-    ./modules-home/browser-firefox.nix
+    ./modules-home/firefox.nix
     # ./modules/cursor-any-vanilladmz.nix
+    ./modules-home/atuin.nix
+    ./modules-home/wallpaper.nix
+    ./modules-home/mime-types.nix
   ];
+
+  
 
   programs.gpg = {
     enable = true;
@@ -59,33 +64,101 @@ in
     enable = true;
     userName = "Diego Pereyra";
     userEmail = "diesphink@gmail.com";
+    extraConfig = {
+      pull.rebase = true;
+      init.defaultBranch = "main";
+      rebase.autoStash = true;
+    };
   };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+
+    appimage-run
+    baobab
+    bat
+    blanket
+    btop
+    calibre
+    cava
+    dbeaver-bin
+    ddcutil
+    dialect
+    duf
+    easytag
+    eclipses.eclipse-committers
+    electrum
+    encfs
+    evince
+    eza
+    fastfetch
+    fstl
+    fstl
+    gimp
     git
     git-crypt
+    gnome-podcasts
+    gnome-text-editor
+    gnome.eog
+    gnome.file-roller
+    gnome.gnome-disk-utility
+    gnome.nautilus
     gnupg
-    pinentry-gnome3
-
-    calcurse # Text-based calendar and scheduling application
-    pavucontrol # PulseAudio Volume Control
-    rofi-power-menu
-    networkmanager_dmenu
-    pkgs.vscode.fhs
-    blanket
+    google-chrome
+    gping
+    grsync
+    handbrake
+    htop
+    hyprpicker
+    inkscape
+    irpf
     keepassxc
-    fastfetch
-    telegram-desktop
+    lazygit
+    libreoffice
+    liferea
+    lightburn
+    meld
+    minder
+    ncdu
+    networkmanager_dmenu
+    nicotine-plus
+    niv
     obsidian
-    iosevka # Adicionada por causa do tema no obsidian, TODO: rever
-    noto-fonts # Adicionada por causa do tema no obsidian, TODO: rever
+    paperwork
+    pavucontrol # PulseAudio Volume Control
+    pdfarranger
+    picard
+    pinentry-gnome3
+    planner
     plexamp
     prusa-slicer
-    baobab
-    lazygit
-
+    remmina
+    ripgrep
+    ripgrep-all
+    rofi-power-menu
+    screen
+    setzer
+    shotwell
+    silver-searcher
+    smartgithg
+    snapshot
+    steam
+    stremio
+    stylish
+    teams-for-linux
+    teamviewer
+    telegram-desktop
+    texstudio
+    tldr
+    transmission-gtk
+    unzip
+    virt-manager
+    vlc
+    vscode.fhs
+    whois
+    zoom-us
+  
     # qt6ct
     # qt6Packages.qt6gtk2
 
@@ -106,6 +179,13 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.z-lua = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

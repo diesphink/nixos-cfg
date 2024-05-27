@@ -52,7 +52,7 @@ fi
 
 if [ "$count" -eq 0 ]; then
   if [ "$term" = true ]; then
-    foot -a "$search" -- $command
+    $TERM -a "$search" -- $command
   else
     $command
   fi
