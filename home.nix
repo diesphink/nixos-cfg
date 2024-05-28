@@ -49,9 +49,8 @@ in
     ./modules-home/wallpaper.nix
     ./modules-home/mime-types.nix
     ./modules-home/shell-any-zsh.nix
+    ./modules-home/code.nix
   ];
-
-  
 
   programs.gpg = {
     enable = true;
@@ -156,10 +155,9 @@ in
     unzip
     virt-manager
     vlc
-    vscode.fhs
     whois
     zoom-us
-  
+
     # qt6ct
     # qt6Packages.qt6gtk2
 
@@ -185,8 +183,6 @@ in
     enable = true;
     enableBashIntegration = true;
   };
-
-
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

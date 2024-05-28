@@ -92,7 +92,7 @@
     LC_TIME = "pt_BR.UTF-8";
   };
 
-  programs.nix-ld.enable = true; 
+  programs.nix-ld.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -110,9 +110,7 @@
     extraSessionCommands = ''
       export WLR_NO_HARDWARE_CURSORS=1
     '';
-    extraOptions = [
-      "--unsupported-gpu"
-    ];
+    extraOptions = [ "--unsupported-gpu" ];
   };
   xdg.portal.wlr.enable = true;
 
@@ -161,7 +159,6 @@
     #media-session.enable = true;
   };
 
-  
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -171,7 +168,7 @@
   users.users.sphink = {
     isNormalUser = true;
     description = "Diego Pereyra";
-    hashedPassword="$y$j9T$C2kehlCtN4ThJnIWWT6I11$dkB89nIGt0rOW2t2qf18m6x7/htCZXOXbCylAcx5ZK8";
+    hashedPassword = "$y$j9T$C2kehlCtN4ThJnIWWT6I11$dkB89nIGt0rOW2t2qf18m6x7/htCZXOXbCylAcx5ZK8";
     shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
@@ -187,12 +184,15 @@
   programs.nautilus-open-any-terminal.terminal = "alacritty";
   services.gnome.sushi.enable = true;
 
-  
-
   environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
 
   security.pam.loginLimits = [
-    { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
+    {
+      domain = "@users";
+      item = "rtprio";
+      type = "-";
+      value = 1;
+    }
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
