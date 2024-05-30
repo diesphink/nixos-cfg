@@ -60,6 +60,11 @@ in
     enable = true;
   };
 
+  #programs.direnv = {
+  #  enable = true;
+  #};
+  programs.direnv.nix-direnv.enable = true;
+
   programs.git = {
     enable = true;
     userName = "Diego Pereyra";
@@ -78,6 +83,7 @@ in
     appimage-run
     baobab
     bat
+    boxes
     blanket
     btop
     calibre

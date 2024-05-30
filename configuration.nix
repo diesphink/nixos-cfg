@@ -27,6 +27,11 @@
   # services.xserver.desktopManager.pantheon.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
 
+  programs.direnv = {
+    enable = true;
+    silent = true;
+  };
+
   xdg.mime.enable = true;
 
   # Bootloader.
@@ -100,6 +105,7 @@
   # Enable the gnome-keyring secrets vault. 
   # Will be exposed through DBus to programs willing to store secrets.
   services.gnome.gnome-keyring.enable = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
 
   programs.sway = {
     enable = true;
