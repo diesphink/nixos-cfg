@@ -30,7 +30,5 @@
       package = pkgs.noto-fonts-emoji;
       name = "Ubuntu Nerd Font";
     };
-
-
   };
 }

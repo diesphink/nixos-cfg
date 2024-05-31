@@ -39,7 +39,6 @@ in
         before-sleep 'swaylock' \
         lock 'swaylock' &
     '')
-
   ];
 
   # ========
@@ -56,7 +55,6 @@ in
       "XF86ScreenSaver" = "exec swaylock --grace 0";
       "${modifier}+Escape" = "exec swaylock --grace 0";
     };
-
 
   # ========
   # Swaylock
@@ -77,8 +75,6 @@ in
       grace = 10;
       clock = true;
       datestr = "󰌾 Locked";
-      
-
 
       ring-color = mkForce "${base03}";
       ring-caps-lock-color = mkForce "${base08}";
