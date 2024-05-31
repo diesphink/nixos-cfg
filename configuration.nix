@@ -14,6 +14,7 @@
     ./modules-sys/login-gdm.nix
     ./modules-sys/bluetooth.nix
     ./modules-sys/fonts.nix
+    ./modules-sys/homepage.nix
   ];
 
   nix = {
@@ -190,7 +191,25 @@
   programs.nautilus-open-any-terminal.terminal = "alacritty";
   services.gnome.sushi.enable = true;
 
-  environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
+  environment.variables = with config.lib.stylix.colors; {
+    WLR_NO_HARDWARE_CURSORS = "1";
+    BASE00 = base00;
+    BASE01 = base01;
+    BASE02 = base02;
+    BASE03 = base03;
+    BASE04 = base04;
+    BASE05 = base05;
+    BASE06 = base06;
+    BASE07 = base07;
+    BASE08 = base08;
+    BASE09 = base09;
+    BASE0A = base0A;
+    BASE0B = base0B;
+    BASE0C = base0C;
+    BASE0D = base0D;
+    BASE0E = base0E;
+    BASE0F = base0F;
+  };
 
   security.pam.loginLimits = [
     {
