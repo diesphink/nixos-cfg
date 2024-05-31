@@ -29,7 +29,51 @@
   home.packages = with pkgs; [
     vscode.fhs
 
-    (writeShellScriptBin "scode-init" ''
+    (writeShellScriptBin "sph-devel-menu" ''
+
+      declare -A folders
+      declare -A commands
+
+
+      ROFI_OPTIONS=""
+      for project in $(ls ~/devel/**/shell.nix); do
+          FOLDER=$(dirname "$project")
+
+          # Project name
+          PROJECT_NAME=$(basename "$FOLDER")
+
+          # Project icon
+          if [ -e "$FOLDER/.venv" ] || [ -e "$FOLDER/venv" ]; then
+              ICON=""
+          elif [ -e "$FOLDER/flake.nix" ]; then
+              ICON="󱄅"
+          else
+              ICON=""
+          fi
+
+          # Project command
+          if [ -e "$FOLDER/.vscode" ]; then
+              COMMAND="scode"
+          else
+              COMMAND="scode"
+          fi
+
+          ROFI_KEY="$ICON $PROJECT_NAME"
+          folders["$ROFI_KEY"]="$FOLDER"
+          commands["$ROFI_KEY"]="$COMMAND"
+          ROFI_OPTIONS="$ROFI_OPTIONS$ROFI_KEY\n"
+      done
+      CHOICE=$(printf "$ROFI_OPTIONS" | rofi -dmenu  -p "Select a project" -mesg "This will start the configured IDE inside shell.nix")
+      if [ -z "$CHOICE" ]; then
+          exit 0
+      else
+          alacritty --class floating-shell -e direnv exec ''${folders["$CHOICE"]} ''${commands["$CHOICE"]}
+      fi
+
+
+    '')
+
+    (writeShellScriptBin "devel-init" ''
       # Create basic shell.nix
       echo -n "Checking shell.nix... "
       if [ ! -e "shell.nix" ]; then
@@ -65,6 +109,7 @@
       echo -n "Adding to .gitignore... "      
       echo ".vscode/extensions" >> .gitignore
       echo ".vscode/data" >> .gitignore
+      echo ".direnv" >> .gitignore
       echo "done!"
 
       echo -n "Running direnv allow... "
@@ -130,4 +175,10 @@
 
     '')
   ];
+
+  wayland.windowManager.sway.config.keybindings =
+    let
+      modifier = config.wayland.windowManager.sway.config.modifier;
+    in
+    lib.mkOptionDefault { "${modifier}+d" = "exec sph-devel-menu"; };
 }

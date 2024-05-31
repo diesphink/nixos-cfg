@@ -49,7 +49,7 @@ in
     ./modules-home/wallpaper.nix
     ./modules-home/mime-types.nix
     ./modules-home/shell-any-zsh.nix
-    ./modules-home/code.nix
+    ./modules-home/devel.nix
   ];
 
   programs.gpg = {
