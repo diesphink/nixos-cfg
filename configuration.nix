@@ -131,6 +131,7 @@
     fuse
     zsh
     rsync
+    jq
   ];
 
   virtualisation.docker.enable = true;

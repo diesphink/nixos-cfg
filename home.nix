@@ -50,6 +50,7 @@ in
     ./modules-home/mime-types.nix
     ./modules-home/shell-any-zsh.nix
     ./modules-home/devel.nix
+    ./modules-home/calibre.nix
   ];
 
   programs.gpg = {
@@ -86,7 +87,6 @@ in
     boxes
     blanket
     btop
-    calibre
     cava
     dbeaver-bin
     ddcutil
