@@ -12,7 +12,12 @@
 let
 
   inherit (lib) mkForce;
-  inherit (config.lib.stylix.colors) base00 base03 base08;
+  inherit (config.lib.stylix.colors)
+    base00
+    base03
+    base08
+    base0A
+    ;
 
   # ===============
   # Behavior  stuff
@@ -190,6 +195,10 @@ in
       floating.titlebar = false;
       floating.border = 2;
       window.hideEdgeBorders = "none";
+
+      colors.focused.indicator = mkForce "${base0A}";
+      colors.unfocused.indicator = mkForce "${base03}";
+      colors.focusedInactive.indicator = mkForce "${base03}";
       # output = {
       #   "*" = {
       #     bg = mkForce "/home/sphink/wallpaper.jpg fill";
@@ -485,7 +494,7 @@ in
         { command = "autotiling"; }
         { command = "sph-autoname-workspaces"; }
         { command = "syncthing -no-browser"; }
-        { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";}
+        { command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"; }
 
         # Always 
         {
@@ -528,6 +537,4 @@ in
       }
     '';
   };
-
-
 }
