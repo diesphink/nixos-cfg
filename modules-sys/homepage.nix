@@ -104,6 +104,7 @@ in
         search = {
           provider = "google";
           target = "_blank";
+          showSearchSuggestions = true;
         };
       }
       {
