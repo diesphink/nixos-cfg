@@ -46,6 +46,7 @@ in
       layout = [
         {
           "General Usage" = {
+            # tab = "Test";
             # icon = "mdi-web";
             icon = "mdi-circle-medium";
             style = "row";
@@ -54,6 +55,7 @@ in
         }
         {
           Social = {
+            # tab = "Other";
             # icon = "mdi-chat";
             icon = "mdi-circle-medium";
             style = "row";
@@ -163,8 +165,8 @@ in
           {
             "Marvin - Admin" = {
               icon = "mdi-security";
-              href = "https://marvin-droid.us5.quickconnect.to/";
-              siteMonitor = "https://marvin-droid.us5.quickconnect.to/";
+              href = "https://192-168-15-2.marvin-droid.direct.quickconnect.to:5001/";
+              siteMonitor = "https://192-168-15-2.marvin-droid.direct.quickconnect.to:5001/";
             };
           }
           {
