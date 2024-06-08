@@ -34,6 +34,14 @@
           ];
           id = "hyrnl-n7ill";
         };
+        "Calibre" = {
+          path = "/home/sphink/Documents/calibre";
+          devices = [
+            "zem"
+            "marvin"
+          ];
+          id = "mzgzk-fanzv";
+        };
         "vault" = {
           path = "/home/sphink/.vault";
           devices = [
@@ -43,7 +51,6 @@
           ];
           id = "yingz-zdnsi";
         };
-
       };
     };
   };
