@@ -99,6 +99,7 @@ in
     evince
     eza
     fastfetch
+    freecad
     fstl
     fstl
     gimp
@@ -163,6 +164,8 @@ in
     vlc
     whois
     zoom-us
+    boxbuddy
+    distrobox
 
     # qt6ct
     # qt6Packages.qt6gtk2
@@ -184,6 +187,17 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  xdg.desktopEntries = {
+    fstl = {
+      name = "fstl";
+      genericName = "A very fast STL file viewer";
+      exec = "fstl %U";
+      terminal = false;
+      categories = [ "Application" ];
+      mimeType = [ "model/stl" ];
+    };
+  };
 
   programs.z-lua = {
     enable = true;
