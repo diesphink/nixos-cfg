@@ -8,13 +8,28 @@
   lib,
   ...
 }:
-let 
-  image_openers = [ "org.gnome.eog.desktop" "gimp.desktop" "work.openpaper.Paperwork.desktop" ];
+let
+  image_openers = [
+    "org.gnome.eog.desktop"
+    "gimp.desktop"
+    "work.openpaper.Paperwork.desktop"
+  ];
   text_openers = [ "org.gnome.TextEditor.desktop" ];
   html_openers = [ "firefox.desktop" ] ++ text_openers;
-  dir_openers = [ "org.gnome.Nautilus.desktop" "code.desktop" "org.gnome.baobab.desktop" ];
-  pdf_openers = [ "org.gnome.Evince.desktop" "com.github.jeromerobert.pdfarranger.desktop" "work.openpaper.Paperwork.desktop" ];
-  doc_openers = [ "writer.desktop" "work.openpaper.Paperwork.desktop"];
+  dir_openers = [
+    "org.gnome.Nautilus.desktop"
+    "code.desktop"
+    "org.gnome.baobab.desktop"
+  ];
+  pdf_openers = [
+    "org.gnome.Evince.desktop"
+    "com.github.jeromerobert.pdfarranger.desktop"
+    "work.openpaper.Paperwork.desktop"
+  ];
+  doc_openers = [
+    "writer.desktop"
+    "work.openpaper.Paperwork.desktop"
+  ];
   calc_openers = [ "calc.desktop" ];
 in
 {
@@ -28,7 +43,7 @@ in
       "text/x.gcode" = [ "PrusaGcodeviewer.desktop" ];
 
       # Images
-      "image/bmp" =image_openers;
+      "image/bmp" = image_openers;
       "image/gif" = image_openers;
       "image/jpeg" = image_openers;
       "image/jpg" = image_openers;
@@ -106,7 +121,6 @@ in
       "application/oxps" = pdf_openers;
       "application/vnd.ms-xpsdocument" = pdf_openers;
       "application/illustrator" = pdf_openers;
-
 
       # Directories
       "inode/directory" = dir_openers;
@@ -217,7 +231,6 @@ in
       "application/x-mswrite" = doc_openers;
       "application/x-starwriter" = doc_openers;
 
-
       # Spreadhseet
       "application/vnd.oasis.opendocument.spreadsheet" = calc_openers;
       "application/vnd.oasis.opendocument.spreadsheet-template" = calc_openers;
@@ -255,8 +268,12 @@ in
       "application/vnd.apple.numbers" = calc_openers;
       "application/x-starcalc" = calc_openers;
 
+      "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
 
-
+      "model/stl" = [
+        "fstl.desktop"
+        "PrusaSlicer.desktop"
+      ];
     };
   };
 }
