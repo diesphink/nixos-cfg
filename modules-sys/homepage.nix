@@ -63,6 +63,15 @@ in
           };
         }
         {
+          Admin = {
+            # tab = "Other";
+            # icon = "mdi-chat";
+            icon = "mdi-circle-medium";
+            style = "row";
+            columns = 4;
+          };
+        }
+        {
           References = {
             # icon = "mdi-book-open-variant";
             icon = "mdi-circle-medium";
@@ -335,6 +344,18 @@ in
         ];
       }
       {
+        "Admin" = [
+          {
+            "Squarespace" = [
+              {
+                icon = "mdi-web-box";
+                href = "https://account.squarespace.com/domains";
+              }
+            ];
+          }
+        ];
+      }
+      {
         References = [
           {
             "Build123d Documentation" = [
@@ -405,9 +426,9 @@ in
     ];
 
     customCSS = ''
-      #footer {
+      /* #footer {
         display: none !important;
-      }
+      } */
 
       #page_container {
         background-color: #${base00} !important;
