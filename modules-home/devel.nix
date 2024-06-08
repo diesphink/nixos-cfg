@@ -36,7 +36,7 @@
 
 
       ROFI_OPTIONS=""
-      for project in $(ls ~/devel/**/shell.nix); do
+      for project in $(ls ~/devel/**/.envrc); do
           FOLDER=$(dirname "$project")
 
           # Project name
@@ -53,9 +53,9 @@
 
           # Project command
           if [ -e "$FOLDER/.vscode" ]; then
-              COMMAND="scode"
+              COMMAND="scode $FOLDER"
           else
-              COMMAND="scode"
+              COMMAND="scode $FOLDER"
           fi
 
           ROFI_KEY="$ICON $PROJECT_NAME"
@@ -63,10 +63,11 @@
           commands["$ROFI_KEY"]="$COMMAND"
           ROFI_OPTIONS="$ROFI_OPTIONS$ROFI_KEY\n"
       done
-      CHOICE=$(printf "$ROFI_OPTIONS" | rofi -dmenu  -p "Select a project" -mesg "This will start the configured IDE inside shell.nix")
+      CHOICE=$(printf "$ROFI_OPTIONS" | rofi -dmenu  -p "Select a project" -mesg "This will start the configured IDE inside shell.nix/flake.nix")
       if [ -z "$CHOICE" ]; then
           exit 0
       else
+          echo alacritty --class floating-shell -e direnv exec ''${folders["$CHOICE"]} ''${commands["$CHOICE"]}
           alacritty --class floating-shell -e direnv exec ''${folders["$CHOICE"]} ''${commands["$CHOICE"]}
       fi
 
@@ -86,8 +87,6 @@
       pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
         ];
-
-        PROJECT_ROOT = builtins.toString ./.;
       }
       EOF
         echo "done!"
@@ -119,18 +118,18 @@
 
     (writeShellScriptBin "scode" ''
 
-      sph-install-default-extensions
-      sph-install-default-settings
+      sph-install-default-extensions "$1"
+      sph-install-default-settings "$1"
 
       code \
-        --user-data-dir "$PROJECT_ROOT/.vscode/data" \
-        --extensions-dir "$PROJECT_ROOT/.vscode/extensions" \
-        $PROJECT_ROOT \
+        --user-data-dir "$1/.vscode/data" \
+        --extensions-dir "$1/.vscode/extensions" \
+        $1 \
         $*
     '')
 
     (writeShellScriptBin "sph-install-default-settings" ''
-      CODE_USER_DIR="$PROJECT_ROOT/.vscode/data/User"
+      CODE_USER_DIR="$1/.vscode/data/User"
       echo -n "Checking for settings... "
       if [ -e ~/.code-default-settings ]; then
         if [ ! -e "$CODE_USER_DIR/settings.json" ]; then
@@ -152,8 +151,8 @@
     (writeShellScriptBin "sph-install-default-extensions" ''
       if [ -e ~/.code-default-extensions ] && [ -e .vscode ]; then
         EXTS=$(code \
-            --user-data-dir "$PROJECT_ROOT/.vscode/data" \
-            --extensions-dir "$PROJECT_ROOT/.vscode/extensions" \
+            --user-data-dir "$1/.vscode/data" \
+            --extensions-dir "$1/.vscode/extensions" \
             --list-extensions)
 
         while read extension
@@ -162,8 +161,8 @@
           if [[ ! "$EXTS" =~ "$extension" ]]; then
             echo "missing! Installing $extension"
             code \
-              --user-data-dir "$PROJECT_ROOT/.vscode/data" \
-              --extensions-dir "$PROJECT_ROOT/.vscode/extensions" \
+              --user-data-dir "$1/.vscode/data" \
+              --extensions-dir "$1/.vscode/extensions" \
               --install-extension "$extension"
           else
             echo "already installed!"
