@@ -72,6 +72,15 @@ in
           };
         }
         {
+          Shop = {
+            # tab = "Other";
+            # icon = "mdi-chat";
+            icon = "mdi-circle-medium";
+            style = "row";
+            columns = 4;
+          };
+        }
+        {
           References = {
             # icon = "mdi-book-open-variant";
             icon = "mdi-circle-medium";
@@ -338,6 +347,34 @@ in
               {
                 icon = "mdi-reddit";
                 href = "https://reddit.com";
+              }
+            ];
+          }
+          {
+            "Printables" = [
+              {
+                icon = "mdi-printer-3d";
+                href = "https://printables.com";
+              }
+            ];
+          }
+        ];
+      }
+      {
+        "Shop" = [
+          {
+            "Mercado Livre" = [
+              {
+                icon = "mdi-cart";
+                href = "https://mercadolivre.com.br";
+              }
+            ];
+          }
+          {
+            "Ali Express" = [
+              {
+                icon = "mdi-cart";
+                href = "https://aliexpress.com";
               }
             ];
           }
