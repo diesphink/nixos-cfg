@@ -274,6 +274,8 @@ in
         "fstl.desktop"
         "PrusaSlicer.desktop"
       ];
+
+      "application/x-bittorrent" = [ "transmission-gtk.desktop" ];
     };
   };
 }
