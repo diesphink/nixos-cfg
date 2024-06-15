@@ -131,6 +131,7 @@ in
     networkmanager_dmenu
     nicotine-plus
     niv
+    nmap
     obsidian
     paperwork
     pavucontrol # PulseAudio Volume Control
