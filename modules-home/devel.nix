@@ -14,7 +14,11 @@
       "editor.formatOnSave" = true;
       "workbench.iconTheme" = "vs-nomo-dark";
       "github.copilot.editor.enableAutoCompletions" = true;
-      "teste" = "algo";
+      "nix.formatterPath" = [
+        "nixfmt"
+        "-w"
+        "200"
+      ];
     };
 
     ".code-default-extensions".text = ''
@@ -23,11 +27,13 @@
       be5invis.vscode-icontheme-nomo-dark
       github.copilot
       github.copilot-chat
+      jnoortheen.nix-ide
     '';
   };
 
   home.packages = with pkgs; [
     vscode.fhs
+    nixfmt-rfc-style
 
     (writeShellScriptBin "sph-devel-menu" ''
 
