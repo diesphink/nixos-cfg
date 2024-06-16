@@ -110,8 +110,8 @@ else
   alias la="ls -lha"
 fi
 
-if [[ -x "$(command -v batcat)" ]]; then
-  alias cat="batcat --style=plain"
+if [[ -x "$(command -v bat)" ]]; then
+  alias cat="bat --style=plain"
 fi
 
 
