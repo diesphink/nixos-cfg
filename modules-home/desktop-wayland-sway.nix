@@ -196,9 +196,9 @@ in
       floating.border = 2;
       window.hideEdgeBorders = "none";
 
-      colors.focused.indicator = mkForce "${base0A}";
-      colors.unfocused.indicator = mkForce "${base03}";
-      colors.focusedInactive.indicator = mkForce "${base03}";
+      # colors.focused.indicator = mkForce "${base0A}";
+      # colors.unfocused.indicator = mkForce "${base03}";
+      # colors.focusedInactive.indicator = mkForce "${base03}";
       # output = {
       #   "*" = {
       #     bg = mkForce "/home/sphink/wallpaper.jpg fill";

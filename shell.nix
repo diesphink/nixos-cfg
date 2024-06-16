@@ -5,7 +5,7 @@
 let
   title = "Nix OS Configurations";
 
-  dependencies = with pkgs; [ pkgs.nixfmt-rfc-style ];
+  dependencies = with pkgs; [ ];
 
   shellHook = ''
     # Add extra shell hook here

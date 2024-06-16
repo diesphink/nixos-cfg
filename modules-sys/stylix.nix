@@ -4,6 +4,7 @@
 
   stylix.image = config.lib.stylix.pixel "base03";
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
+  stylix.enable = true;
 
   stylix.targets.gnome.enable = true;
 
