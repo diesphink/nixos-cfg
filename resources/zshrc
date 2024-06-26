@@ -122,7 +122,8 @@ alias suce="source venv/bin/activate"
 alias lg="lazygit"
 function sandbox() { mkdir -p /home/sphink/sandbox/$(date "+%Y-%m-%d-$@");  cd $_}
 alias bb='sudo service warsaw start; xdg-open "https://www2.bancobrasil.com.br/aapf/login.html"; read -s -k "?Press enter to continue" ; sudo service warsaw stop'
-alias nrs='sudo nixos-rebuild switch --flake ~/devel/nixos-cfg\#ford'
+#alias nrs='sudo nixos-rebuild switch --flake ~/devel/nixos-cfg\#ford'
+# alias nrs='nh os switch ~/devel/nixos-cfg -u'
 
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.

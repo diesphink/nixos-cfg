@@ -77,6 +77,8 @@ in
     };
   };
 
+  programs.btop.enable = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -86,7 +88,6 @@ in
     bat
     boxes
     blanket
-    btop
     cava
     dbeaver-bin
     ddcutil
@@ -242,6 +243,12 @@ in
 
   programs.alacritty = {
     enable = true;
+    settings = {
+      window.dimensions = {
+        lines = 40;
+        columns = 150;
+      };
+    };
   };
 
   # qt.enable = true;

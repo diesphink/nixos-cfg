@@ -19,6 +19,23 @@
         "-w"
         "200"
       ];
+      "editor.fontLigatures" = true;
+      "editor.scrollbar.horizontal" = "hidden";
+      "editor.scrollbar.vertical" = "hidden";
+      "editor.fontFamily" = "JetBrainsMono Nerd Font";
+      "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font";
+      "breadcrumbs.enabled" = false;
+      "editor.minimap.enabled" = false;
+      "workbench.activityBar.location" = "hidden";
+      "explorer.fileNesting.enabled" = true;
+      "explorer.confirmDelete" = false;
+      "explorer.confirmDragAndDrop" = false;
+      "explorer.fileNesting.patterns" = {
+        "pubspec.yaml" = "pubspec.lock,pubspec_overrides.yaml,.packages,.flutter-plugins,.flutter-plugins-dependencies,.metadata";
+        "*.dart" = "\${capture}.g.dart";
+        "firebase.json" = "firebase*,firestore*,.firebaserc, storage.rules, database.rules";
+        "flake.nix" = "flake.lock";
+      };
     };
 
     ".code-default-extensions".text = ''
@@ -146,8 +163,12 @@
         else
           echo -n "already installed! Merging settings with defaults... "
           jq -s '.[0] * .[1]' "$CODE_USER_DIR/settings.json" ~/.code-default-settings > "$CODE_USER_DIR/settings.json.tmp"
-          mv "$CODE_USER_DIR/settings.json.tmp" "$CODE_USER_DIR/settings.json"
-          echo "done!"
+          if [ $? -ne 0 ]; then
+            echo "failed!"
+          else
+            mv "$CODE_USER_DIR/settings.json.tmp" "$CODE_USER_DIR/settings.json"
+            echo "done!"
+          fi
         fi
       else
         echo Nothing to do here!

@@ -132,6 +132,11 @@
     zsh
     rsync
     jq
+
+    (writeShellScriptBin "nrs" ''
+      nh os switch ~/devel/nixos-cfg $*
+    '')
+
   ];
 
   virtualisation.docker.enable = true;
@@ -225,7 +230,9 @@
     enable = true;
     extraConfig = ''
       sphink ford = (root) NOPASSWD: /run/current-system/sw/bin/nixos-rebuild
+      sphink ford = (root) NOPASSWD: /run/current-system/sw/bin/nrs
     '';
+    # sphink ford = (root) NOPASSWD: ${nrs}/bin/nrs
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -241,10 +248,20 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
-    options = "--delete-older-than 8d";
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "daily";
+  #   options = "--delete-older-than 8d";
+  # };
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/sphink/devel/nixos-cfg";
+    clean = {
+      enable = true;
+      extraArgs = "--keep 2";
+      dates = "daily";
+    };
   };
 
   # Open ports in the firewall.

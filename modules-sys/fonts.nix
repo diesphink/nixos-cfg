@@ -12,7 +12,8 @@
     (nerdfonts.override {
       fonts = [
         "SourceCodePro"
-        # "FiraCode"
+        "JetBrainsMono"
+
         # "DroidSansMono"
         # "Hack"
         "Ubuntu"
