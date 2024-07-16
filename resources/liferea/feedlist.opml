@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+  <head>
+    <title>Liferea Feed List Export</title>
+  </head>
+  <body>
+    <outline title="Example Feeds" text="Example Feeds" description="Example Feeds" type="folder" id="aihdfpc" sortColumn="time" collapsed="true">
+      <outline title="News" text="News" description="News" type="folder" id="tlltvhd" sortColumn="time" collapsed="true">
+        <outline title="Ars Technica" text="Ars Technica" description="Ars Technica" type="rss" id="ugoyqoa" sortColumn="time" xmlUrl="https://feeds.arstechnica.com/arstechnica/index" htmlUrl="https://arstechnica.com" updateInterval="-1" collapsed="true"/>
+        <outline title="Slashdot" text="Slashdot" description="Slashdot" type="rss" id="tndnrex" sortColumn="time" xmlUrl="https://rss.slashdot.org/Slashdot/slashdotMain" htmlUrl="https://slashdot.org/" updateInterval="-1" collapsed="true"/>
+        <outline title="BBC" text="BBC" description="BBC" type="rss" id="jnraeiv" sortColumn="time" xmlUrl="https://feeds.bbci.co.uk/news/rss.xml?edition=int" htmlUrl="https://www.bbc.co.uk/news" updateInterval="-1" collapsed="true"/>
+        <outline title="Science" text="Science" description="Science" type="rss" id="jchueqd" sortColumn="time" xmlUrl="https://www.sciencenews.org/feed" htmlUrl="https://www.sciencenews.org" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Knowledge" text="Knowledge" description="Knowledge" type="folder" id="rybrpfb" sortColumn="time" collapsed="true">
+        <outline title="Aeon" text="Aeon" description="Aeon" type="rss" id="lbsxaka" sortColumn="time" xmlUrl="https://aeon.co/feed.rss" htmlUrl="https://aeon.co" updateInterval="-1" collapsed="true"/>
+        <outline title="Quanta Magazine" text="Quanta Magazine" description="Quanta Magazine" type="rss" id="knacmeg" sortColumn="time" xmlUrl="https://api.quantamagazine.org/feed/" htmlUrl="https://www.quantamagazine.org" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Open Source" text="Open Source" description="Open Source" type="folder" id="vtcewai" sortColumn="time" collapsed="true">
+        <outline title="Planet Debian" text="Planet Debian" description="Planet Debian" type="rss" id="twvhaji" sortColumn="time" xmlUrl="https://planet.debian.org/rss20.xml" htmlUrl="https://planet.debian.org/" updateInterval="-1" collapsed="true"/>
+        <outline title="Liferea Blog" text="Liferea Blog" description="Liferea Blog" type="atom" id="spglqrq" sortColumn="time" xmlUrl="https://feeds.feedburner.com/LifereaBlog" htmlUrl="https://lzone.de/liferea/blog/" updateInterval="-1" collapsed="true"/>
+        <outline title="Planet GNOME" text="Planet GNOME" description="Planet GNOME" type="atom" id="khtocyd" sortColumn="time" xmlUrl="https://planet.gnome.org/atom.xml" htmlUrl="https://planet.gnome.org/" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Podcasts" text="Podcasts" description="Podcasts" type="folder" id="ngetime" sortColumn="time" collapsed="true">
+        <outline title="EscapePod" text="EscapePod" description="EscapePod" type="atom" id="hwdnmpc" sortColumn="time" xmlUrl="https://escapepod.org/feed/atom/" htmlUrl="https://escapepod.org" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Music Blogs" text="Music Blogs" description="Music Blogs" type="folder" id="yfhqxhw" sortColumn="time" collapsed="true">
+        <outline title="Free Music Archive" text="Free Music Archive" description="Free Music Archive" id="ybfkbkd" sortColumn="time" xmlUrl="https://freemusicarchive.org/recent.atom" htmlUrl="" updateInterval="-1" collapsed="true"/>
+        <outline title="Gorilla vs. Bear" text="Gorilla vs. Bear" description="Gorilla vs. Bear" type="rss" id="tsalldn" sortColumn="time" xmlUrl="https://www.gorillavsbear.net/category/mp3/feed/" htmlUrl="https://www.gorillavsbear.net" updateInterval="-1" collapsed="true"/>
+        <outline title="KEXP" text="KEXP" description="KEXP" id="rqdiksu" sortColumn="time" xmlUrl="http://feeds.kexp.org/kexp/songoftheday" htmlUrl="" updateInterval="-1" collapsed="true"/>
+        <outline title="Fluxblog" text="Fluxblog" description="Fluxblog" type="rss" id="kuejyja" sortColumn="time" xmlUrl="http://www.fluxblog.org/feed" htmlUrl="https://www.fluxblog.org" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Comics" text="Comics" description="Comics" type="folder" id="xtslvmj" sortColumn="time" collapsed="true">
+        <outline title="xkcd" text="xkcd" description="xkcd" type="atom" id="tmjslxu" sortColumn="time" xmlUrl="https://xkcd.com/atom.xml" htmlUrl="https://xkcd.com/" updateInterval="-1" collapsed="true"/>
+      </outline>
+    </outline>
+    <outline title="FeedReader Subscriptions" text="FeedReader Subscriptions" description="FeedReader Subscriptions" type="folder" id="nowgtra" sortColumn="time" sortReversed="false" expanded="true">
+      <outline title="Free Software" text="Free Software" description="Free Software" type="folder" id="ovksqsd" sortColumn="time" expanded="true">
+        <outline title="Planet GNOME" text="Planet GNOME" description="Planet GNOME" type="atom" id="rexfirr" sortColumn="time" xmlUrl="http://planet.gnome.org/atom.xml" htmlUrl="https://planet.gnome.org/" updateInterval="-1" collapsed="true"/>
+        <outline title="Linux Journal - The Original Magazine of the Linux Community" text="Linux Journal - The Original Magazine of the Linux Community" description="Linux Journal - The Original Magazine of the Linux Community" type="rss" id="usnggey" sortColumn="time" xmlUrl="http://www.linuxjournal.com/node/feed" htmlUrl="https://www.linuxjournal.com/" updateInterval="-1" collapsed="true"/>
+        <outline title="matrix.org" text="matrix.org" description="matrix.org" type="atom" id="preqpyn" sortColumn="time" xmlUrl="https://matrix.org/blog/feed" htmlUrl="https://matrix.org" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Games" text="Games" description="Games" type="folder" id="mhuwhci" sortColumn="time" expanded="true"/>
+      <outline title="Hacking" text="Hacking" description="Hacking" type="folder" id="txnxktq" sortColumn="time" expanded="true">
+        <outline title="Hackaday" text="Hackaday" description="Hackaday" type="rss" id="xmpafur" sortColumn="time" xmlUrl="https://hackaday.com/blog/feed/" htmlUrl="https://hackaday.com" updateInterval="-1" collapsed="true"/>
+        <outline title="Electromaker.io - Latest Projects" text="Electromaker.io - Latest Projects" description="Electromaker.io - Latest Projects" type="atom" id="gbdfcbg" sortColumn="time" xmlUrl="https://www.electromaker.io/feed/latest-projects/atom" htmlUrl="https://www.electromaker.io/feed/latest-projects/atom" updateInterval="-1" collapsed="true"/>
+        <outline title="Mike Buss" text="Mike Buss" description="Mike Buss" type="rss" id="fhnepql" sortColumn="time" xmlUrl="https://www.mikebuss.com/rss.xml" htmlUrl="https://mikebuss.com" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Comics" text="Comics" description="Comics" type="folder" id="writjxx" sortColumn="time" expanded="true">
+        <outline title="QC RSS" text="QC RSS" description="QC RSS" type="rss" id="sdsdvwe" sortColumn="time" xmlUrl="http://www.questionablecontent.net/QCRSS.xml" htmlUrl="http://www.questionablecontent.net" updateInterval="-1" collapsed="true"/>
+        <outline title="Mentirinhas" text="Mentirinhas" description="Mentirinhas" type="rss" id="obembeu" sortColumn="time" xmlUrl="http://mentirinhas.com.br/feed/" htmlUrl="https://mentirinhas.com.br" updateInterval="-1" collapsed="true"/>
+        <outline title="Unspeakable Vault RSS" text="Unspeakable Vault RSS" description="Unspeakable Vault RSS" type="rss" id="cgfdacj" sortColumn="time" xmlUrl="http://www.goominet.com/unspeakable-vault/?type=103" htmlUrl="http://www.goominet.com/unspeakable-vault/" updateInterval="-1" collapsed="true"/>
+        <outline title="Saturday Morning Breakfast Cereal" text="Saturday Morning Breakfast Cereal" description="Saturday Morning Breakfast Cereal" type="rss" id="fkendap" sortColumn="time" xmlUrl="http://www.smbc-comics.com/rss.php" htmlUrl="https://www.smbc-comics.com/" updateInterval="-1" collapsed="true"/>
+        <outline title="xkcd.com" text="xkcd.com" description="xkcd.com" type="atom" id="qgyfdqa" sortColumn="time" xmlUrl="http://xkcd.com/atom.xml" htmlUrl="https://xkcd.com/" updateInterval="-1" collapsed="true"/>
+        <outline title="Channelate" text="Channelate" description="Channelate" type="rss" id="bwiekij" sortColumn="time" xmlUrl="http://channelate.com/feed/" htmlUrl="https://www.channelate.com" updateInterval="-1" collapsed="true"/>
+        <outline title="WillTirando" text="WillTirando" description="WillTirando" type="rss" id="wuaklik" sortColumn="time" xmlUrl="http://www.willtirando.com.br/rss/" htmlUrl="http://www.willtirando.com.br" updateInterval="-1" collapsed="true"/>
+        <outline title="Nerf NOW!!" text="Nerf NOW!!" description="Nerf NOW!!" type="rss" id="powsqnq" sortColumn="time" xmlUrl="http://feeds.feedburner.com/nerfnow/full" htmlUrl="https://www.nerfnow.com/" updateInterval="-1" collapsed="true"/>
+        <outline title="Optipess" text="Optipess" description="Optipess" type="rss" id="lhuxgfr" sortColumn="time" xmlUrl="http://feeds2.feedburner.com/Optipess" htmlUrl="https://www.optipess.com" updateInterval="-1" collapsed="true"/>
+        <outline title="Oglaf! -- Comics. Often dirty." text="Oglaf! -- Comics. Often dirty." description="Oglaf! -- Comics. Often dirty." type="rss" id="yjhjpkw" sortColumn="time" xmlUrl="http://oglaf.com/feeds/rss/" htmlUrl="https://www.oglaf.com/latest/" updateInterval="-1" collapsed="true"/>
+        <outline title="Order of the Stick" text="Order of the Stick" description="Order of the Stick" type="rss" id="nkcicgt" sortColumn="time" xmlUrl="http://www.giantitp.com/comics/oots.rss" htmlUrl="http://www.giantitp.com/Comics.html" updateInterval="-1" collapsed="true"/>
+        <outline title="Scandinavia and the World" text="Scandinavia and the World" description="Scandinavia and the World" type="rss" id="ftclvbf" sortColumn="time" xmlUrl="http://feeds.feedburner.com/satwcomic" htmlUrl="https://satwcomic.com" updateInterval="-1" collapsed="true"/>
+        <outline title="Heck If I Know Comics" text="Heck If I Know Comics" description="Heck If I Know Comics" type="rss" id="fkvxnsc" sortColumn="time" xmlUrl="http://heckifiknowcomics.tumblr.com/rss" htmlUrl="https://heckifiknowcomics.tumblr.com/" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Tecnologia" text="Tecnologia" description="Tecnologia" type="folder" id="rgrmnuc" sortColumn="time" expanded="true">
+        <outline title="Meio Bit" text="Meio Bit" description="Meio Bit" type="rss" id="fueheld" sortColumn="time" xmlUrl="http://feeds.feedburner.com/meiobit" htmlUrl="https://meiobit.com/" updateInterval="-1" collapsed="true"/>
+        <outline title="It's FOSS" text="It's FOSS" description="It's FOSS" type="rss" id="deshcsn" sortColumn="time" xmlUrl="http://feeds.feedburner.com/ItsFoss" htmlUrl="https://itsfoss.com/" updateInterval="-1" collapsed="true"/>
+        <outline title="OMG! Ubuntu!" text="OMG! Ubuntu!" description="OMG! Ubuntu!" type="rss" id="jdefnjk" sortColumn="time" xmlUrl="https://omgubuntu.co.uk/feed" htmlUrl="https://www.omgubuntu.co.uk/" updateInterval="-1" collapsed="true"/>
+        <outline title="tech-at-instacart - Medium" text="tech-at-instacart - Medium" description="tech-at-instacart - Medium" type="rss" id="vkcfnjo" sortColumn="time" xmlUrl="https://tech.instacart.com/feed" htmlUrl="https://tech.instacart.com?source=rss----587883b5d2ee---4" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="Variety" text="Variety" description="Variety" type="folder" id="pptfstu" sortColumn="time" collapsed="true">
+        <outline title="Geeks are Sexy Technology News" text="Geeks are Sexy Technology News" description="Geeks are Sexy Technology News" type="rss" id="bbovgam" sortColumn="time" xmlUrl="http://www.geeksaresexy.net/feed/" htmlUrl="https://www.geeksaresexy.net/" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="GIC" text="GIC" description="GIC" type="folder" id="qiajysp" sortColumn="time" collapsed="true">
+        <outline title="Inovacoes activity" text="Inovacoes activity" description="Inovacoes activity" type="rss" id="goeeqxv" sortColumn="time" xmlUrl="https://git.gicbrasil.com/inovacoes.atom?feed_token=84Tp1rqNcWvfxhheK7q2" htmlUrl="https://git.gicbrasil.com/inovacoes.atom?feed_token=84Tp1rqNcWvfxhheK7q2" updateInterval="-1" collapsed="true"/>
+        <outline title="Desenvolvimento activity" text="Desenvolvimento activity" description="Desenvolvimento activity" type="rss" id="qwdjybj" sortColumn="time" xmlUrl="https://git.gicbrasil.com/dev.atom?feed_token=84Tp1rqNcWvfxhheK7q2" htmlUrl="https://git.gicbrasil.com/dev.atom?feed_token=84Tp1rqNcWvfxhheK7q2" updateInterval="-1" collapsed="true"/>
+        <outline title="Clients activity" text="Clients activity" description="Clients activity" type="rss" id="tegsbhb" sortColumn="time" xmlUrl="https://git.gicbrasil.com/dev/clients.atom?feed_token=84Tp1rqNcWvfxhheK7q2" htmlUrl="https://git.gicbrasil.com/dev/clients.atom?feed_token=84Tp1rqNcWvfxhheK7q2" updateInterval="-1" collapsed="true"/>
+      </outline>
+      <outline title="3d" text="3d" description="3d" type="folder" id="pscqaej" sortColumn="time" collapsed="true">
+        <outline title="Prusa Printers" text="Prusa Printers" description="Prusa Printers" type="rss" id="ytojand" sortColumn="time" xmlUrl="https://blog.prusaprinters.org/feed/" htmlUrl="https://blog.prusa3d.com/" updateInterval="-1" collapsed="true"/>
+      </outline>
+    </outline>
+    <outline title="Important" text="Important" description="Important" type="vfolder" id="fmglitp" sortColumn="time" matchType="any" unreadOnly="false" collapsed="true">
+      <outline type="rule" text="Flag status" rule="flagged" value="" additive="true"/>
+    </outline>
+    <outline title="Unread" text="Unread" description="Unread" type="vfolder" id="fvsxfwx" sortColumn="time" matchType="any" unreadOnly="false" collapsed="true">
+      <outline type="rule" text="Read status" rule="unread" value="" additive="true"/>
+    </outline>
+  </body>
+</opml>
