@@ -100,7 +100,7 @@ in
     evince
     eza
     fastfetch
-    freecad
+    stable.freecad
     fstl
     fstl
     gimp
@@ -134,7 +134,7 @@ in
     niv
     nmap
     obsidian
-    paperwork
+    stable.paperwork
     pavucontrol # PulseAudio Volume Control
     pdfarranger
     picard
