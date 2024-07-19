@@ -51,7 +51,6 @@ in
     ./modules-home/shell-any-zsh.nix
     ./modules-home/devel.nix
     ./modules-home/calibre.nix
-    ./modules-home/liferea.nix
   ];
 
   programs.gpg = {
@@ -125,6 +124,7 @@ in
     keepassxc
     lazygit
     libreoffice
+    liferea
     lightburn
     meld
     minder
