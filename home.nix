@@ -97,21 +97,20 @@ in
     eclipses.eclipse-committers
     electrum
     encfs
+    eog
     evince
     eza
     fastfetch
+    file-roller
     stable.freecad
     fstl
     fstl
     gimp
     git
     git-crypt
+    gnome-disk-utility
     gnome-podcasts
     gnome-text-editor
-    gnome.eog
-    gnome.file-roller
-    gnome.gnome-disk-utility
-    gnome.nautilus
     gnupg
     google-chrome
     gping
@@ -128,6 +127,7 @@ in
     lightburn
     meld
     minder
+    nautilus
     ncdu
     networkmanager_dmenu
     nicotine-plus
@@ -160,7 +160,7 @@ in
     telegram-desktop
     texstudio
     tldr
-    transmission-gtk
+    transmission_3-gtk
     unzip
     virt-manager
     vlc

@@ -58,29 +58,10 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    # driSupport = true;
-    driSupport32Bit = true;
-    # extraPackages = with pkgs; [
-    #   mesa
-    #   mesa.drivers
-    # ];
+    enable32Bit = true;
   };
-
-  # # Enable OpenGL
-  # hardware.opengl = {
-  #   enable = true;
-  #   driSupport = true;
-  #   driSupport32Bit = true;
-  #   #   extraPackages = with pkgs; [
-  #   # # Add packages needed for Nouveau acceleration here
-  #   # # For example, Mesa for OpenGL:
-  #   # mesa
-  #   # mesa.drivers
-  #   #   ];
-  # };
 
   boot.extraModprobeConfig = ''
     options nvidia NVreg_RegistryDwords="PowerMizerEnable=0x1; PerfLevelSrc=0x2222; PowerMizerLevel=0x3; PowerMizerDefault=0x3; PowerMizerDefaultAC=0x3"
