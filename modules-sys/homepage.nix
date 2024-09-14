@@ -1,5 +1,9 @@
 # Homepage
 
+# Documentation: https://gethomepage.dev/latest/configs/
+# Material Design Icons: https://materialdesignicons.com/
+# Simple Icons: https://simpleicons.org/
+
 { config, pkgs, ... }:
 
 let
@@ -258,10 +262,10 @@ in
       {
         "Social" = [
           {
-            "Twitter" = [
+            "Bluesky" = [
               {
-                icon = "mdi-twitter";
-                href = "https://twitter.com/";
+                icon = "si-bluesky";
+                href = "https://bsky.app/";
               }
             ];
           }
@@ -286,6 +290,14 @@ in
               {
                 icon = "mdi-instagram";
                 href = "https://instagram.com/";
+              }
+            ];
+          }
+          {
+            "Reddit" = [
+              {
+                icon = "mdi-reddit";
+                href = "https://reddit.com";
               }
             ];
           }
@@ -343,10 +355,10 @@ in
             ];
           }
           {
-            "Reddit" = [
+            "XP" = [
               {
-                icon = "mdi-reddit";
-                href = "https://reddit.com";
+                icon = "mdi-bank";
+                href = "https://portal.xpi.com.br/default.aspx";
               }
             ];
           }
