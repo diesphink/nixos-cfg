@@ -138,3 +138,6 @@ setopt no_auto_menu  # require an extra TAB press to open the completion menu
 
 # Load z.sh
 [[ -x "$(command -v z)" ]] && eval "$(z --init zsh)"
+
+# Reload direnv if running in VS Code
+[[ "$TERM_PROGRAM" = "vscode" ]] && direnv reload || true
