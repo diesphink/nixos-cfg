@@ -91,6 +91,7 @@ in
     cava
     dbeaver-bin
     ddcutil
+    devbox
     dialect
     duf
     easytag
