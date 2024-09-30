@@ -136,7 +136,7 @@ in
     nmap
     obsidian
     stable.paperwork
-    pavucontrol # PulseAudio Volume Control
+    stable.pavucontrol # PulseAudio Volume Control
     pdfarranger
     picard
     pinentry-gnome3
