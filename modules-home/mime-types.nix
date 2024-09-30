@@ -31,6 +31,7 @@ let
     "work.openpaper.Paperwork.desktop"
   ];
   calc_openers = [ "calc.desktop" ];
+  media_openers = [ "vlc.desktop" ];
 in
 {
   xdg.mimeApps = {
@@ -267,6 +268,9 @@ in
       "application/x-iwork-numbers-sffnumbers" = calc_openers;
       "application/vnd.apple.numbers" = calc_openers;
       "application/x-starcalc" = calc_openers;
+
+      # Audio/video
+      "audio/ogg" = media_openers;
 
       "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
 
