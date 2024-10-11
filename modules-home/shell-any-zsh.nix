@@ -15,6 +15,9 @@
     ".zshenv" = {
       source = ../resources/zshenv;
     };
+
+    # Qualquer alteração nesses arquivos, lembrar de remover o cache do zsh (arquivos .zwc na pasta $HOME)
+
     ".p10k.zsh" = {
       source = ../resources/p10k.zsh;
     };
