@@ -141,6 +141,7 @@
   ];
 
   virtualisation.docker.enable = true;
+  virtualisation.lxd.enable = true;
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
@@ -208,6 +209,7 @@
       "wheel"
       "docker"
       "libvirtd"
+      "lxd"
     ];
   };
 
@@ -290,6 +292,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  networking.firewall.trustedInterfaces = [ "lxdbr0" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
