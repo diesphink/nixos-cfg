@@ -35,6 +35,8 @@
         "*.dart" = "\${capture}.g.dart";
         "firebase.json" = "firebase*,firestore*,.firebaserc, storage.rules, database.rules";
         "flake.nix" = "flake.lock";
+        "devbox.json" = "devbox.lock";
+        "package.json" = "package-lock.json";
       };
     };
 
