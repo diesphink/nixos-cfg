@@ -51,6 +51,8 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.config.common.default = "gtk";
 
+  programs.xwayland.enable = true;
+
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "${pkgs.sway}/bin/sway";
   services.xrdp.openFirewall = true;
