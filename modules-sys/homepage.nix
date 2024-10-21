@@ -97,6 +97,7 @@ in
             # icon = "mdi-desktop-classic";
             icon = "mdi-circle-medium";
             style = "column";
+            columns = 4;
           };
         }
         {
@@ -187,57 +188,40 @@ in
           {
             "Marvin - Admin" = {
               icon = "mdi-security";
-              href = "https://192-168-15-2.marvin-droid.direct.quickconnect.to:5001/";
-              siteMonitor = "https://192-168-15-2.marvin-droid.direct.quickconnect.to:5001/";
+              href = "https://marvin.lly.com.br";
+              siteMonitor = "https://marvin.lly.com.br";
             };
           }
           {
             "File Station" = {
               icon = "mdi-security";
-              href = "https://files.diegopereyra.com";
-              siteMonitor = "https://files.diegopereyra.com";
-            };
-          }
-          {
-            "Grocy" = {
-              icon = "mdi-fridge-alert";
-              href = "https://grocy.diegopereyra.com";
-              siteMonitor = "https://grocy.diegopereyra.com";
+              href = "https://files.lly.com.br";
+              siteMonitor = "https://files.lly.com.br";
             };
           }
           {
             "Plex" = {
               icon = "mdi-plex";
-              href = "https://plex.diegopereyra.com";
-              siteMonitor = "https://plex.diegopereyra.com";
+              href = "https://plex.lly.com.br";
+              siteMonitor = "https://plex.lly.com.br";
             };
           }
           {
             "Syncthing - Marvin" = {
               icon = "mdi-sync";
-              href = "https://sync.diegopereyra.com";
-              siteMonitor = "https://sync.diegopereyra.com";
+              href = "https://sync.lly.com.br";
+              siteMonitor = "https://sync.lly.com.br";
             };
           }
+        ];
+      }
+      {
+        Hactar = [
           {
-            "Marvin - Admin - Rede local" = {
-              icon = "mdi-security";
-              href = "https://192.168.15.2:5001";
-              siteMonitor = "https://192.168.15.2:5001";
-            };
-          }
-          {
-            "Grocy - Rede local" = {
+            "Grocy" = {
               icon = "mdi-fridge-alert";
-              href = "http://192.168.15.2:9283/stockoverview";
-              siteMonitor = "http://192.168.15.2:9283/stockoverview";
-            };
-          }
-          {
-            "Plex - Rede local" = {
-              icon = "mdi-plex";
-              href = "http://192.168.15.2:32400/web/index.html";
-              siteMonitor = "http://192.168.15.2:32400/web/index.html";
+              href = "https://grocy.lly.com.br";
+              siteMonitor = "https://grocy.lly.com.br";
             };
           }
           {
@@ -248,12 +232,20 @@ in
             };
           }
           {
-            "Syncthing - Marvin - Rede local" = {
-              icon = "mdi-sync";
-              href = "http://192.168.15.2:8384/";
-              siteMonitor = "http://192.168.15.2:8384/";
+            "FreshRSS" = {
+              icon = "mdi-fridge-alert";
+              href = "https://rss.lly.com.br";
+              siteMonitor = "https://rss.lly.com.br";
             };
           }
+          {
+            "Actual Budget" = {
+              icon = "mdi-fridge-alert";
+              href = "https://budget.lly.com.br";
+              siteMonitor = "https://budget.lly.com.br";
+            };
+          }
+
         ];
       }
     ];
@@ -399,6 +391,30 @@ in
               {
                 icon = "mdi-web-box";
                 href = "https://account.squarespace.com/domains";
+              }
+            ];
+          }
+          {
+            "Cloudflare" = [
+              {
+                icon = "mdi-web-box";
+                href = "https://dash.cloudflare.com/";
+              }
+            ];
+          }
+          {
+            "Oracle Cloud" = [
+              {
+                icon = "mdi-web-box";
+                href = "https://cloud.oracle.com/?tenant=sphink";
+              }
+            ];
+          }
+          {
+            "Registro.br" = [
+              {
+                icon = "mdi-web-box";
+                href = "https://registro.br";
               }
             ];
           }
