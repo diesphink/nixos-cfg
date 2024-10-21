@@ -96,7 +96,7 @@ in
     duf
     easytag
     eclipses.eclipse-committers
-    electrum
+    stable.electrum
     encfs
     eog
     evince
