@@ -2,7 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
 
@@ -41,6 +45,9 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "ford"; # Define your hostname.
+  # networking.extraHosts = ''
+  #   144.22.197.43 rss.lly.com.br budget.lly.com.br
+  # '';
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   services.flatpak.enable = true;
@@ -51,7 +58,7 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.config.common.default = "gtk";
 
-  programs.xwayland.enable = true;
+  # programs.xwayland.enable = true;
 
   services.xrdp.enable = true;
   services.xrdp.defaultWindowManager = "${pkgs.sway}/bin/sway";
@@ -135,6 +142,7 @@
     zsh
     rsync
     jq
+    nixd
 
     (writeShellScriptBin "nrs" ''
       nh os switch ~/devel/nixos-cfg $*

@@ -1,4 +1,9 @@
 {
+  "nix.serverPath": "nixd",
+  "nix.enableLanguageServer": true,
+  "nixpkgs": {
+    "expr": "import <nixpkgs> {}",
+  },
   "nix.formatterPath": [
     "nixfmt",
     "-w",
