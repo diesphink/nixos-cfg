@@ -30,7 +30,7 @@ let
 in
 
 {
-  home.packages = with pkgs; [ calibre ];
+  home.packages = with pkgs; [ stable.calibre ];
 
   home.file = {
     ".config/calibre" = {
