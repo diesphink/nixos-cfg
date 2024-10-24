@@ -143,6 +143,7 @@
     rsync
     jq
     nixd
+    virtiofsd
 
     (writeShellScriptBin "nrs" ''
       nh os switch ~/devel/nixos-cfg $*

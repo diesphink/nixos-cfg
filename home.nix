@@ -51,6 +51,7 @@ in
     ./modules-home/shell-any-zsh.nix
     ./modules-home/devel.nix
     ./modules-home/calibre.nix
+    ./modules-home/bb.nix
   ];
 
   programs.gpg = {
